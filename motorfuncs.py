@@ -2,7 +2,7 @@ from roboclaw import Roboclaw
 from time import sleep
 
 address = 0x80
-m1Dir = -1
+m1Dir = 1
 m2Dir = 1
 
 class MotorFunc:
@@ -14,16 +14,18 @@ class MotorFunc:
     self.m2Dir = m2Dir
 
   def _forwardM1(self, val=127):
-    if val < 0:
-      self.roboclaw.BackwardM1(self.addr, self.m1Dir * val)
+    evalVal = val * self.m1Dir
+    if evalVal < 0:
+      self.roboclaw.BackwardM1(self.addr, evalVal)
     else:
-      self.roboclaw.ForwardM1(self.addr, self.m1Dir * val)
+      self.roboclaw.ForwardM1(self.addr, evalVal)
 
   def _forwardM2(self, val=127):
+    evalVal = val * self.m2Dir
     if val < 0:
-      self.roboclaw.BackwardM2(self.addr, self.m2Dir * val)
+      self.roboclaw.BackwardM2(self.addr, evalVal)
     else:
-      self.roboclaw.ForwardM2(self.addr, self.m2Dir * val)
+      self.roboclaw.ForwardM2(self.addr, evalVal)
 
   def moveAll(self, val=127):
     self._forwardM1(val)
