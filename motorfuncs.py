@@ -15,15 +15,15 @@ class MotorFunc:
 
   def _forwardM1(self, val=127):
     if val < 0:
-      self.roboclaw.BackwardM1(addr, m1Dir * val)
+      self.roboclaw.BackwardM1(self.addr, self.m1Dir * val)
     else:
-      self.roboclaw.ForwardM1(addr, m1Dir * val)
+      self.roboclaw.ForwardM1(self.addr, self.m1Dir * val)
 
   def _forwardM2(self, val=127):
     if val < 0:
-      self.roboclaw.BackwardM2(addr, m2Dir * val)
+      self.roboclaw.BackwardM2(self.addr, self.m2Dir * val)
     else:
-      self.roboclaw.ForwardM2(addr, m2Dir * val)
+      self.roboclaw.ForwardM2(self.addr, self.m2Dir * val)
 
   def moveAll(self, val=127):
     self._forwardM1(val)
