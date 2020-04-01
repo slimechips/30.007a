@@ -40,3 +40,7 @@ class MotorFunc:
   def stopAll(self):
     self._forwardM1(0)
     self._forwardM2(0)
+
+  def brakeAll(self):
+    self._forwardM1(1)
+    self._forwardM2(1)
